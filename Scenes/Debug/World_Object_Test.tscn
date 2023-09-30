@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://c04sxaeaucuv8"]
+
+[ext_resource type="Script" path="res://Scripts/Debug/CameraTest.cs" id="1_1ueye"]
+[ext_resource type="Script" path="res://Scripts/Core/WindowCamera.cs" id="2_she6d"]
+[ext_resource type="Script" path="res://Scripts/Core/WindowCanvas.cs" id="2_uh7pe"]
+[ext_resource type="PackedScene" uid="uid://cqplni68hi0m6" path="res://Scenes/UI/TestBorder.tscn" id="3_bw30k"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1ueye")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_uh7pe")
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("3_bw30k")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+script = ExtResource("2_she6d")
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(7.545, 7.545)
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D"]
+position = Vector2(152, 22)
+scale = Vector2(18.195, 18.195)
+polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Node2D"]
+position = Vector2(53, 41)
+scale = Vector2(18.195, 18.195)
+polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Node2D"]
+position = Vector2(116, 93)
+scale = Vector2(18.195, 18.195)
+polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+
+[node name="Polygon2D4" type="Polygon2D" parent="Node2D"]
+position = Vector2(115, 66)
+rotation = -2.32318
+scale = Vector2(18.195, 18.195)
+polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+
+[node name="Polygon2D5" type="Polygon2D" parent="Node2D"]
+position = Vector2(189, 102)
+rotation = -2.32318
+scale = Vector2(18.195, 18.195)
+polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
