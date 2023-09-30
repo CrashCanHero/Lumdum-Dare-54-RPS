@@ -7,6 +7,6 @@ public partial class WindowCanvas : CanvasLayer {
     }
 
     void ScaleChange(Vector2 newScale) {
-        Scale = newScale;
+        Scale = newScale * 1.33f;
     }
 }

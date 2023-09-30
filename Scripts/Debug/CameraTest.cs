@@ -6,8 +6,8 @@ public partial class CameraTest : Node2D {
 
     public override void _Ready() {
         WindowSystem.SetupWindow();
-        WindowSystem.Position = Vector2.One * 0.5f;
-        WindowSystem.Scale = Vector2.One * 0.25f;
+        WindowSystem.Position = Vector2.Zero;
+        WindowSystem.Scale = Vector2.One * 0.75f;
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
@@ -15,7 +15,11 @@ public partial class CameraTest : Node2D {
     {
         base._Process(delta);
 
-        WindowSystem.Position += (position * ((float)delta + 1f));
+        if (Input.IsKeyPressed(Key.Space)) {
+            WindowSystem.Scale += position;
+        }else {
+            WindowSystem.Position += position;
+        }
 
         position = Vector2.Zero;
     }
