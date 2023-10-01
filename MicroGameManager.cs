@@ -31,6 +31,8 @@ public partial class MicroGameManager : Node2D
 
         MicroGame game = GD.Load<MicroGame>("res://Scenes/MicroGames/" + name + ".tscn");
 
+        currentGame.QueueFree();
+
         currentGame = game;
 
         isFinished = false;
