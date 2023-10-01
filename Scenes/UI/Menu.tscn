@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu1d3jpdu360e"]
+[gd_scene load_steps=7 format=3 uid="uid://bu1d3jpdu360e"]
 
+[ext_resource type="Texture2D" uid="uid://bxqungbro4xi" path="res://Art/Tess/TessGame.png" id="1_drv2d"]
 [ext_resource type="FontFile" uid="uid://du3nagrmyjln4" path="res://PixelArmy.ttf" id="1_eu0ad"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_ohi3b"]
+[ext_resource type="Texture2D" uid="uid://dnjstprjuhv8g" path="res://Art/Tess/TessCrankthatSouljaBoy.png" id="2_yhobm"]
+[ext_resource type="Texture2D" uid="uid://bcvy65qo1dgyi" path="res://Art/Tess/TesstheBig.png" id="3_gbuwq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbkcd"]
 font = ExtResource("1_eu0ad")
@@ -12,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ohi3b")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -54,25 +59,26 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/Title/CenterContainer"]
-custom_minimum_size = Vector2(1920, 200)
+[node name="Title" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/Title/CenterContainer"]
+custom_minimum_size = Vector2(1920, 276.655)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_eu0ad")
-theme_override_font_sizes/normal_font_size = 190
-bbcode_enabled = true
-text = "[center]Bit [color=red]JAM[/color]"
+texture = ExtResource("1_drv2d")
+stretch_mode = 5
 
 [node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Title"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 8
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/Title/CenterContainer2"]
-custom_minimum_size = Vector2(1920, 200)
+custom_minimum_size = Vector2(1920, 175)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_eu0ad")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
-text = "[center]A collection of games with [color=red]limited visibility"
+text = "[center]Finding a frog with
+ [color=red]limited visibility"
+scroll_active = false
 
 [node name="Go Button" type="BoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -82,9 +88,14 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer"]
+[node name="CenterContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_yhobm")
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer"]
 layout_mode = 2
@@ -94,11 +105,11 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer"]
+[node name="Go Button" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Button"]
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Go Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,13 +121,34 @@ label_settings = SubResource("LabelSettings_lbkcd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Quit Button" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Quit Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_lbkcd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer"]
+[node name="CenterContainer2" type="MarginContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/CenterContainer2"]
+layout_mode = 2
+texture = ExtResource("3_gbuwq")
+stretch_mode = 5
 
 [node name="High Score" type="BoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -133,7 +165,8 @@ size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("1_eu0ad")
 theme_override_font_sizes/normal_font_size = 106
 bbcode_enabled = true
-text = "[center][u]Previous Best "
+text = "[center]Previous Best "
+scroll_active = false
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer"]
 layout_mode = 2
@@ -143,3 +176,7 @@ theme_override_fonts/normal_font = ExtResource("1_eu0ad")
 theme_override_font_sizes/normal_font_size = 106
 bbcode_enabled = true
 text = "[center]0"
+scroll_active = false
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Go Button" to="." method="OnGoButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Quit Button" to="." method="OnQuitButtonPressed"]

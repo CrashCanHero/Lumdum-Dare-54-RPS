@@ -6,5 +6,10 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Control" parent="." instance=ExtResource("1_fx0j4")]
+offset_left = -53.0
+offset_top = 31.0
+offset_right = -53.0
+offset_bottom = 31.0
+metadata/_edit_use_anchors_ = true
 
 [node name="WindowAnimator" parent="." instance=ExtResource("2_o2k62")]

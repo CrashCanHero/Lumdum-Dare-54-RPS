@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://skuxuq7eowjw"]
+[gd_scene load_steps=17 format=3 uid="uid://skuxuq7eowjw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/IntroUI.cs" id="1_r70ad"]
+[ext_resource type="Texture2D" uid="uid://bcdsaiyryni0a" path="res://Art/Tess/TessBreakDance.png" id="2_rrw2s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_teyyi"]
 font_size = 200
@@ -21,6 +22,77 @@ font_size = 60
 [sub_resource type="LabelSettings" id="LabelSettings_wp0q7"]
 font_size = 260
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mren3"]
+atlas = ExtResource("2_rrw2s")
+region = Rect2(0, 0, 85, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsakl"]
+atlas = ExtResource("2_rrw2s")
+region = Rect2(85, 0, 85, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpk25"]
+atlas = ExtResource("2_rrw2s")
+region = Rect2(170, 0, 85, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmpes"]
+atlas = ExtResource("2_rrw2s")
+region = Rect2(255, 0, 85, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s550j"]
+atlas = ExtResource("2_rrw2s")
+region = Rect2(340, 0, 85, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfte6"]
+atlas = ExtResource("2_rrw2s")
+region = Rect2(425, 0, 85, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4w3m"]
+atlas = ExtResource("2_rrw2s")
+region = Rect2(510, 0, 85, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlt17"]
+atlas = ExtResource("2_rrw2s")
+region = Rect2(595, 0, 85, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a82sn"]
+atlas = ExtResource("2_rrw2s")
+region = Rect2(680, 0, 85, 66)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecdpg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mren3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsakl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpk25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmpes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s550j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfte6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4w3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlt17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a82sn")
+}],
+"loop": true,
+"name": &"Dance",
+"speed": 30.0
+}]
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -33,7 +105,7 @@ ButtonPath = NodePath("CanvasLayer/Info/VBoxContainer/HBoxContainer/Button")
 IntroScreenPath = NodePath("CanvasLayer/Info")
 WaitScreenPath = NodePath("CanvasLayer/Wait")
 TimerPath = NodePath("CanvasLayer/Timer")
-WaitScreenLabelPath = NodePath("CanvasLayer/Wait/Label")
+WaitScreenLabelPath = NodePath("CanvasLayer/Wait/VBoxContainer/Label")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -131,7 +203,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Wait" type="CenterContainer" parent="CanvasLayer"]
+[node name="Wait" type="HBoxContainer" parent="CanvasLayer"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,9 +211,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Wait"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Wait"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Wait"]
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Wait/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Wait/VBoxContainer"]
 layout_mode = 2
 text = "One sec..."
 label_settings = SubResource("LabelSettings_wp0q7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/Wait/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Wait/VBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1207, 711)
+render_target_update_mode = 0
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer/Wait/VBoxContainer/SubViewportContainer/SubViewport"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Wait/VBoxContainer/SubViewportContainer/SubViewport/Node2D"]
+position = Vector2(550, 300)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_ecdpg")
+animation = &"Dance"
+autoplay = "Dance"
+frame_progress = 0.496857
+
+[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer/Wait/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Wait"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
