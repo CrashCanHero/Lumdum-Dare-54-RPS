@@ -8,7 +8,7 @@ public partial class MicroCam : Node2D
     {
         WindowSystem.SetupWindow();
         WindowSystem.Position = Vector2.Zero;
-        WindowSystem.Scale = Vector2.One * 0.75f;
+        WindowSystem.Scale = Vector2.One * 0.1f;
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
@@ -16,14 +16,7 @@ public partial class MicroCam : Node2D
     {
         base._Process(delta);
 
-        if (Input.IsKeyPressed(Key.Space))
-        {
-            WindowSystem.Scale += position;
-        }
-        else
-        {
-            WindowSystem.Position += position;
-        }
+        WindowSystem.Position += position;
 
         position = Vector2.Zero;
     }

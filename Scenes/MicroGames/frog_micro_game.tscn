@@ -9,4 +9,3 @@ objs = [NodePath("Frog")]
 
 [node name="Frog" parent="." instance=ExtResource("2_gtw1e")]
 position = Vector2(600, 234.605)
-scale = Vector2(5, 5)

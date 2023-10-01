@@ -9,6 +9,7 @@ public partial class FrogGame : MicroGame
     public override void Start()
     {
         GD.Print("Starting");
+
         foreach (MicroGameObject obj in objs)
         {
             obj.Start();
