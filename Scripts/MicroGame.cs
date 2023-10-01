@@ -1,11 +1,19 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class MicroGame : Node2D
 {
-	protected float timescale;
+	public static MicroGame currentGameManager;
 
-	public void SetTimescale(float time) 
+	public float timescale { get; private set; } = 1f;
+
+    public override void _Ready()
+    {
+		currentGameManager = this;
+    }
+
+    public void SetTimescale(float time) 
 	{
 		timescale = time;
 	}
@@ -15,14 +23,14 @@ public partial class MicroGame : Node2D
 		//some kind of code here
 	}
 
-	protected virtual void Fail() 
+	public virtual void Fail() 
 	{
 		if (MicroGameManager.Instance == null) return;
 
 		MicroGameManager.Instance.FinishGame(false);
 	}
 
-    protected virtual void Win() 
+    public virtual void Win() 
 	{
         if (MicroGameManager.Instance == null) return;
 
