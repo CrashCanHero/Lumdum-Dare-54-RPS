@@ -2,14 +2,19 @@ using Godot;
 using System;
 
 public partial class MainMenu : CenterContainer {
+    [Export]
+    public RichTextLabel ScoreDisplay;
+
     public void OnQuitButtonPressed() {
         GetTree().Quit();
     }
 
     public void OnGoButtonPressed() {
-        Node2D game = (Node2D)ResourceLoader.Load<PackedScene>("res://Scenes/microgame.tscn").Instantiate();
-
-        GetParent().AddChild(game);
+        GetTree().ChangeSceneToPacked(GD.Load<PackedScene>("res://Scenes/microgame.tscn"));
         QueueFree();
+    }
+
+    public void ScoreReady() {
+        ScoreDisplay.Text = $"[center]{SaveSystem.Instance.Load()}";
     }
 }

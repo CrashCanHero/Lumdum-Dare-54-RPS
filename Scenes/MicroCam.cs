@@ -6,7 +6,7 @@ public partial class MicroCam : Node2D
     Vector2 position;
     public override void _Ready()
     {
-        WindowSystem.SetupWindow();
+        WindowSystem.ResetWindow();
         WindowSystem.Position = Vector2.Zero;
         WindowSystem.Scale = Vector2.One * 0.5f;
         Input.MouseMode = Input.MouseModeEnum.Captured;

@@ -10,13 +10,14 @@
 font = ExtResource("1_eu0ad")
 font_size = 80
 
-[node name="Control" type="CenterContainer"]
+[node name="Control" type="CenterContainer" node_paths=PackedStringArray("ScoreDisplay")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ohi3b")
+ScoreDisplay = NodePath("CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer/RichTextLabel2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -31,7 +32,7 @@ grow_vertical = 2
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/BG"]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -180,3 +181,4 @@ scroll_active = false
 
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Go Button" to="." method="OnGoButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Quit Button" to="." method="OnQuitButtonPressed"]
+[connection signal="ready" from="CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer/RichTextLabel2" to="." method="ScoreReady"]

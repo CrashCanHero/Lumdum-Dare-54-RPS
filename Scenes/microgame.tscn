@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdaqlei62kbv0"]
+[gd_scene load_steps=9 format=3 uid="uid://5lt6jmjuvvb"]
 
 [ext_resource type="Script" path="res://Scripts/Core/WindowCanvas.cs" id="1_73m8u"]
-[ext_resource type="PackedScene" uid="uid://dfdp6yukxdo2b" path="res://micro_game_manager.tscn" id="1_hao14"]
+[ext_resource type="PackedScene" path="res://micro_game_manager.tscn" id="1_hao14"]
 [ext_resource type="Script" path="res://Scenes/MicroCam.cs" id="1_x3flt"]
 [ext_resource type="Script" path="res://Scripts/Core/WindowViewport.cs" id="2_73qip"]
 [ext_resource type="AudioStream" uid="uid://yv2bqsv5m844" path="res://Audio/WW2.wav" id="4_40a63"]

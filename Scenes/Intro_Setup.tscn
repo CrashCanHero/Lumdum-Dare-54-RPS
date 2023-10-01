@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhlf6hjj6rj6c"]
+[gd_scene load_steps=4 format=3 uid="uid://dhlf6hjj6rj6c"]
 
 [ext_resource type="PackedScene" uid="uid://skuxuq7eowjw" path="res://Scenes/UI/Setup.tscn" id="1_fx0j4"]
 [ext_resource type="PackedScene" uid="uid://8sh7w651a5m4" path="res://Scenes/Debug/WindowAnimator.tscn" id="2_o2k62"]
+[ext_resource type="PackedScene" uid="uid://coe5c7tbphcxv" path="res://Scenes/save_system.tscn" id="3_chiyq"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,3 +14,5 @@ offset_bottom = 31.0
 metadata/_edit_use_anchors_ = true
 
 [node name="WindowAnimator" parent="." instance=ExtResource("2_o2k62")]
+
+[node name="Save System" parent="." instance=ExtResource("3_chiyq")]
