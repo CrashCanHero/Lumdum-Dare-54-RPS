@@ -11,6 +11,8 @@ public partial class Frog : AnimatedSprite2D
             if (Input.IsActionJustPressed("Click")) 
             {
                 MicroGame.currentGameManager.Win();
+                MicroGameManager.Instance.AddTime(1f);
+                MicroGameManager.Instance.FindFrog();
             }
         }
     }

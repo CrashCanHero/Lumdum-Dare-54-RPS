@@ -11,7 +11,21 @@ public partial class MicroGameManager : Node2D
     public int lastPlayerLives;
     public float gameTimescale = 1f;
 
+    private float Time = 30f;
+    [Export]
+    public Label timer;
+
+    [Export]
+    public Control ui;
+
+    [Export]
+    public AudioStreamPlayer aud;
+
     public int score;
+
+    private int Froggers;
+
+    private bool isOver;
 
     [Export]
     public Node2D root;
@@ -39,6 +53,23 @@ public partial class MicroGameManager : Node2D
 
         LoadRandomMicroGame();
     }
+    public override void _Process(double delta)
+    {
+        if (Time <= 0f && !isOver) 
+        {
+            GameOver();
+            return;
+        }
+
+        if (isOver) return;
+        
+        Time -= (float)delta;
+        timer.Text = "Time: " + (int)Time;
+    }
+
+    public void AddTime(float time) => Time += time;
+    public void FindFrog() => Froggers++;
+
     public void LoadRandomMicroGame() 
     {
         int random = GD.RandRange(0, levels.Length - 1);
@@ -58,6 +89,7 @@ public partial class MicroGameManager : Node2D
     }
     public void LoadMicroGame(string name) 
     {
+        isOver = false;
         if (!isFinished) return;
         GD.Print("Loading game");
 
@@ -78,6 +110,10 @@ public partial class MicroGameManager : Node2D
     public void GameOver() 
     {
         //code here
+        currentGame.QueueFree();
+        isOver = true;
+        aud.Stop();
+        ui.Hide();
     }
 
     public void FinishGame(bool isWon) 

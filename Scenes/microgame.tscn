@@ -15,7 +15,10 @@ font_size = 246
 [node name="Game state" type="Node2D"]
 script = ExtResource("1_x3flt")
 
-[node name="Micro Game Manager" parent="." node_paths=PackedStringArray("root") instance=ExtResource("1_hao14")]
+[node name="Micro Game Manager" parent="." node_paths=PackedStringArray("timer", "ui", "aud", "root") instance=ExtResource("1_hao14")]
+timer = NodePath("../CanvasLayer/Control/Label")
+ui = NodePath("../CanvasLayer/Control")
+aud = NodePath("../CanvasLayer2/SubViewportContainer/SubViewport/Node2D/AudioStreamPlayer")
 root = NodePath("../CanvasLayer2/SubViewportContainer/SubViewport/Node2D")
 levels = PackedStringArray("frog_micro_game")
 
@@ -84,9 +87,3 @@ label_settings = SubResource("LabelSettings_7gai0")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="CanvasLayer/Control"]
 current = true
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 60.0
-autostart = true
-
-[connection signal="timeout" from="Timer" to="Micro Game Manager" method="GameOver"]

@@ -15,6 +15,7 @@ public partial class FrogGame : MicroGame
     public override void Start()
     {
         MicroCam.Shrink(0.02f);
+
         GD.Print("Starting");
 
         foreach (MicroGameObject obj in objs)
