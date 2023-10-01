@@ -8,8 +8,13 @@ public partial class MicroCam : Node2D
     {
         WindowSystem.SetupWindow();
         WindowSystem.Position = Vector2.Zero;
-        WindowSystem.Scale = Vector2.One * 0.1f;
+        WindowSystem.Scale = Vector2.One * 0.5f;
         Input.MouseMode = Input.MouseModeEnum.Captured;
+    }
+
+    public static void Shrink(float scale) 
+    {
+        WindowSystem.Scale = new Vector2(Math.Clamp(WindowSystem.Scale.X - scale, 0.25f, 1f), Math.Clamp(WindowSystem.Scale.Y - scale, 0.25f, 1f));
     }
 
     public override void _Process(double delta)

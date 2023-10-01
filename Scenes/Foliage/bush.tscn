@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnl0shgtkoeii"]
+
+[ext_resource type="Texture2D" uid="uid://demjxf0o52i17" path="res://Art/FrogProps.png" id="1_ubyri"]
+
+[node name="Sprite2D" type="Sprite2D"]
+light_mask = 2
+visibility_layer = 2
+texture = ExtResource("1_ubyri")
+region_enabled = true
+region_rect = Rect2(97, 1, 97.4961, 87.1192)
