@@ -18,7 +18,7 @@ public partial class WindowViewport : CanvasLayer {
 
     public override void _Process(double delta) {
         Vector2 screenSize = new Vector2(1f / WindowSystem.PixelScale.X, 1f / WindowSystem.PixelScale.Y);
-        viewport.Size = (Vector2I)(screenSize * WindowSystem.Scale);
+        //viewport.Size = (Vector2I)(screenSize / WindowSystem.Scale);
         //container.Position = -(screenSize * WindowSystem.Position);
         nodeParent.Position = -(screenSize * WindowSystem.Position);
     }

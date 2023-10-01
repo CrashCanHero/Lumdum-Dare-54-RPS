@@ -16,11 +16,12 @@ public partial class WindowAnimator : Node2D {
     AnimPoint currentAnim;
 
 
-    public int this[int ID, float time] {
+    public int this[int ID, float time, Action onDoneAction = null] {
         get {
             anims.Enqueue(new AnimPoint() {
                 Point = Animations[ID],
                 Time = time,
+                OnDoneAction = onDoneAction
             });
 
             if (currentAnim == null) {
@@ -64,5 +65,6 @@ public partial class WindowAnimator : Node2D {
     class AnimPoint {
         public WindowAnimationPoint Point;
         public float Time;
+        public Action OnDoneAction;
     }
 }

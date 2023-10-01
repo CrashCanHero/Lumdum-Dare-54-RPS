@@ -25,7 +25,7 @@ public partial class Window_Test : Node2D {
             return;
         }
 
-        if (WindowSystem.PumpAnimation()) {
+        if (WindowSystem.PumpAnimation(out float t)) {
             animID++;
 
             if (animID >= 4) {

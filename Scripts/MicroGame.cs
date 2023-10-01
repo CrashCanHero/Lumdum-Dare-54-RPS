@@ -3,8 +3,14 @@ using System;
 
 [GlobalClass]
 public partial class MicroGame : Node2D
-{
+{	
 	public static MicroGame currentGameManager;
+
+	[Export]
+	public int InTransition;
+
+	[Export]
+	public float InTransitionTime;
 
 	public float timescale { get; private set; } = 1f;
 
