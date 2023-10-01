@@ -11,6 +11,8 @@ public partial class MicroGameManager : Node2D
     public int lastPlayerLives;
     public float gameTimescale = 1f;
 
+    public int score;
+
     [Export]
     public Node2D root;
 
@@ -71,6 +73,11 @@ public partial class MicroGameManager : Node2D
         isFinished = false;
 
         currentGame.Start();
+    }
+
+    public void GameOver() 
+    {
+        //code here
     }
 
     public void FinishGame(bool isWon) 

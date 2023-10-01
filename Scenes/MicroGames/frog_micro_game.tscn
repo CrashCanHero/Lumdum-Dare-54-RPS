@@ -1,11 +1,87 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpmae0xcfrgnn"]
+[gd_scene load_steps=4 format=3 uid="uid://bpmae0xcfrgnn"]
 
 [ext_resource type="Script" path="res://Scripts/Micro Games/FrogGame.cs" id="1_2tqtv"]
 [ext_resource type="PackedScene" uid="uid://24kogkfropup" path="res://Micro Game Assets/Frog/Frog Object.tscn" id="2_gtw1e"]
+[ext_resource type="PackedScene" uid="uid://dnl0shgtkoeii" path="res://Scenes/Foliage/bush.tscn" id="3_ix8r6"]
 
-[node name="Frog Micro Game" type="Node2D" node_paths=PackedStringArray("objs")]
+[node name="Frog Micro Game" type="Node2D" node_paths=PackedStringArray("objs", "spawns")]
 script = ExtResource("1_2tqtv")
 objs = [NodePath("Frog")]
+spawns = [NodePath("Spawn Positions/1"), NodePath("Spawn Positions/2"), NodePath("Spawn Positions/3"), NodePath("Spawn Positions/4"), NodePath("Spawn Positions/5"), NodePath("Spawn Positions/6"), NodePath("Spawn Positions/7"), NodePath("Spawn Positions/8"), NodePath("Spawn Positions/9")]
 
 [node name="Frog" parent="." instance=ExtResource("2_gtw1e")]
 position = Vector2(600, 234.605)
+
+[node name="Spawn Positions" type="Node" parent="."]
+
+[node name="1" type="Node2D" parent="Spawn Positions"]
+position = Vector2(394, 143)
+
+[node name="2" type="Node2D" parent="Spawn Positions"]
+position = Vector2(1215, 412)
+
+[node name="3" type="Node2D" parent="Spawn Positions"]
+position = Vector2(599, 515)
+
+[node name="4" type="Node2D" parent="Spawn Positions"]
+position = Vector2(166, 857)
+
+[node name="5" type="Node2D" parent="Spawn Positions"]
+position = Vector2(1033, 667)
+
+[node name="6" type="Node2D" parent="Spawn Positions"]
+position = Vector2(1653, 141)
+
+[node name="7" type="Node2D" parent="Spawn Positions"]
+position = Vector2(1439, 686)
+
+[node name="8" type="Node2D" parent="Spawn Positions"]
+position = Vector2(1679, 903)
+
+[node name="9" type="Node2D" parent="Spawn Positions"]
+position = Vector2(908, 820)
+
+[node name="Sprite2D" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(369, 580)
+
+[node name="Sprite2D2" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(1563, 662)
+
+[node name="Sprite2D3" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(373, 170)
+
+[node name="Sprite2D4" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(983, 856)
+
+[node name="Sprite2D5" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(863, 854)
+
+[node name="Sprite2D6" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(215, 876)
+
+[node name="Sprite2D7" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(627, 558)
+
+[node name="Sprite2D8" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(1189, 436)
+
+[node name="Sprite2D9" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(1613, 168)
+
+[node name="Sprite2D10" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(1739, 164)
+
+[node name="Sprite2D11" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(1683, 202)
+
+[node name="Sprite2D12" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(1515, 712)
+
+[node name="Sprite2D13" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(1481, 780)
+
+[node name="Sprite2D14" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(1615, 918)
+
+[node name="Sprite2D15" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(1671, 968)

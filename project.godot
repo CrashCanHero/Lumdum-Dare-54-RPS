@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="Wario-Ware"
-run/main_scene="res://Scenes/Intro_Setup.tscn"
 config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"
@@ -41,4 +40,4 @@ Click={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 1, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

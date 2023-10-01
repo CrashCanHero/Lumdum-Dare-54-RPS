@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://5lt6jmjuvvb"]
+[gd_scene load_steps=9 format=3 uid="uid://bdaqlei62kbv0"]
 
 [ext_resource type="Script" path="res://Scripts/Core/WindowCanvas.cs" id="1_73m8u"]
-[ext_resource type="PackedScene" path="res://micro_game_manager.tscn" id="1_hao14"]
+[ext_resource type="PackedScene" uid="uid://dfdp6yukxdo2b" path="res://micro_game_manager.tscn" id="1_hao14"]
 [ext_resource type="Script" path="res://Scenes/MicroCam.cs" id="1_x3flt"]
 [ext_resource type="Script" path="res://Scripts/Core/WindowViewport.cs" id="2_73qip"]
+[ext_resource type="AudioStream" uid="uid://yv2bqsv5m844" path="res://Audio/WW2.wav" id="4_40a63"]
 [ext_resource type="Texture2D" uid="uid://o5j34137cqs" path="res://Art/Hand.png" id="4_vpwcr"]
+[ext_resource type="FontFile" uid="uid://du3nagrmyjln4" path="res://PixelArmy.ttf" id="6_m3yyx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7gai0"]
+font = ExtResource("6_m3yyx")
+font_size = 246
 
 [node name="Game state" type="Node2D"]
 script = ExtResource("1_x3flt")
@@ -32,6 +38,10 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Node2D" type="Node2D" parent="CanvasLayer2/SubViewportContainer/SubViewport"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer2/SubViewportContainer/SubViewport/Node2D"]
+stream = ExtResource("4_40a63")
+autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("1_73m8u")
@@ -62,3 +72,21 @@ offset_bottom = 7960.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 51.0
+offset_right = 670.0
+offset_bottom = 286.0
+text = "Time: "
+label_settings = SubResource("LabelSettings_7gai0")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="CanvasLayer/Control"]
+current = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Micro Game Manager" method="GameOver"]

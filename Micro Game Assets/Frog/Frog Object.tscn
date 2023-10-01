@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://24kogkfropup"]
+[gd_scene load_steps=9 format=3 uid="uid://24kogkfropup"]
 
 [ext_resource type="Script" path="res://Scripts/Micro Games/Objects/FrogObject.cs" id="1_ba4la"]
 [ext_resource type="Texture2D" uid="uid://b1j5mk2bb48yg" path="res://Art/Frog.png" id="2_n4ns3"]
 [ext_resource type="Script" path="res://Micro Game Assets/Frog/Frog.cs" id="3_2dlwn"]
+[ext_resource type="AudioStream" uid="uid://7tu8nt6j3vmc" path="res://Audio/Frog_Croak.wav" id="4_fiu5d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0by8q"]
 atlas = ExtResource("2_n4ns3")
@@ -44,5 +45,9 @@ script = ExtResource("1_ba4la")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5lio6")
 animation = &"ribbit"
-frame_progress = 0.10696
+frame_progress = 0.201034
 script = ExtResource("3_2dlwn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fiu5d")
+autoplay = true
