@@ -15,9 +15,12 @@ public partial class CameraTest : Node2D {
     {
         base._Process(delta);
 
-        if (Input.IsKeyPressed(Key.Space)) {
+        if (Input.IsKeyPressed(Key.Space))
+        {
             WindowSystem.Scale += position;
-        }else {
+        }
+        else
+        {
             WindowSystem.Position += position;
         }
 
