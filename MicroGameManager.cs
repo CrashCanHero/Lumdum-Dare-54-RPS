@@ -23,7 +23,7 @@ public partial class MicroGameManager : Node2D
 
     public int score;
 
-    private int Froggers;
+    private static ulong Froggers;
 
     private bool isOver;
 
@@ -69,6 +69,11 @@ public partial class MicroGameManager : Node2D
 
     public void AddTime(float time) => Time += time;
     public void FindFrog() => Froggers++;
+
+    public static ulong GetFrogs()
+    {
+        return Froggers;
+    }
 
     public void LoadRandomMicroGame() 
     {
