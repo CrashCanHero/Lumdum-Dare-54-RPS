@@ -1,0 +1,147 @@
+[gd_scene load_steps=6 format=3 uid="uid://skuxuq7eowjw"]
+
+[ext_resource type="Script" path="res://Scripts/UI/IntroUI.cs" id="1_r70ad"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_teyyi"]
+font_size = 200
+font_color = Color(1, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ps0q5"]
+font_size = 34
+font_color = Color(1, 0.960784, 0.972549, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fwk0g"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_wp0q7"]
+font_size = 260
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r70ad")
+ButtonPath = NodePath("CanvasLayer/Info/VBoxContainer/HBoxContainer/Button")
+IntroScreenPath = NodePath("CanvasLayer/Info")
+WaitScreenPath = NodePath("CanvasLayer/Wait")
+TimerPath = NodePath("CanvasLayer/Timer")
+WaitScreenLabelPath = NodePath("CanvasLayer/Wait/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CenterContainer"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+color = Color(0, 0, 1, 1)
+
+[node name="Info" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
+layout_mode = 2
+text = "HEY!"
+label_settings = SubResource("LabelSettings_teyyi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
+layout_mode = 2
+text = "This game requires some setup in order to work
+If you have multiple screens then put this window on the screen you would like to play on then hit the button
+If you only have 1 screen then you can ignore this warning and just hit the button
+Hit. The. Button."
+label_settings = SubResource("LabelSettings_ps0q5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer/Info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer5" type="CenterContainer" parent="CanvasLayer/Info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer4" type="CenterContainer" parent="CanvasLayer/Info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer6" type="CenterContainer" parent="CanvasLayer/Info/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/Info/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Info/VBoxContainer/HBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer/HBoxContainer/Button/CenterContainer"]
+layout_mode = 2
+text = "Let's Go"
+label_settings = SubResource("LabelSettings_fwk0g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer7" type="CenterContainer" parent="CanvasLayer/Info/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Wait" type="CenterContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Wait"]
+layout_mode = 2
+text = "One sec..."
+label_settings = SubResource("LabelSettings_wp0q7")
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]

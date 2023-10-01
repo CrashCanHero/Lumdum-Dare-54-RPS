@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://8sh7w651a5m4"]
+
+[ext_resource type="Script" path="res://Scripts/Animation/WindowAnimator.cs" id="1_tw37p"]
+[ext_resource type="Script" path="res://Scripts/Animation/WindowAnimationPoint.cs" id="2_idghj"]
+
+[sub_resource type="Resource" id="Resource_xuu3j"]
+script = ExtResource("2_idghj")
+Position = Vector2(0, 0)
+Size = Vector2(0.5, 0.5)
+PivotPoint = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_vr656"]
+script = ExtResource("2_idghj")
+Position = Vector2(0.5, 0)
+Size = Vector2(0.5, 0.5)
+PivotPoint = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_up3vr"]
+script = ExtResource("2_idghj")
+Position = Vector2(0, 0.5)
+Size = Vector2(0.5, 0.5)
+PivotPoint = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_wxkfk"]
+script = ExtResource("2_idghj")
+Position = Vector2(0.5, 0.5)
+Size = Vector2(0.5, 0.5)
+PivotPoint = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_5jhac"]
+script = ExtResource("2_idghj")
+Position = Vector2(0.2, 0.2)
+Size = Vector2(0.6, 0.6)
+PivotPoint = Vector2(0, 0)
+
+[node name="WindowAnimator" type="Node2D"]
+script = ExtResource("1_tw37p")
+Animations = Array[Object]([SubResource("Resource_xuu3j"), SubResource("Resource_vr656"), SubResource("Resource_up3vr"), SubResource("Resource_wxkfk"), SubResource("Resource_5jhac")])

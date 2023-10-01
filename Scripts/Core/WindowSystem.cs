@@ -6,11 +6,6 @@ public static class WindowSystem {
     public static Vector2 PivotPoint {
         get => pivot;
         set {
-            if (pivot == value){
-                return;
-            }
-
-
             pivot = value;
 
             //We need to reset the window position if the pivot changes
@@ -24,17 +19,13 @@ public static class WindowSystem {
     public static Vector2 Position {
         get => pos;
         set {
-            if (pos == value) {
-                return;
-            }
-
             pos = value;
 
             Vector2 pivotSize = WindowGetSize() * PivotPoint;
 
             WindowSetPosition(new Vector2I(
                 (int)Mathf.Lerp(positionReference.X - pivotSize.X, positionReference.X + sizeReference.X - pivotSize.X, value.X),
-                (int)Mathf.Lerp(positionReference.Y - pivotSize.Y, positionReference.Y + sizeReference.Y - pivotSize.Y, value.Y)
+                (int)Mathf.Lerp(positionReference.Y - pivotSize.Y - 50f, positionReference.Y + sizeReference.Y - pivotSize.Y - 50f, value.Y)
             ));
             OnWindowMove?.Invoke(value);
         }
@@ -44,10 +35,6 @@ public static class WindowSystem {
     public static Vector2 Scale {
         get => scale;
         set {
-            if (scale == value) {
-                return;
-            }
-
             scale = value;
             WindowSetSize(new Vector2I(
                 (int)(sizeReference.X * value.X),
@@ -69,19 +56,19 @@ public static class WindowSystem {
     public delegate void OnWindowPivotEvent(Vector2 newPivot);
     public static event OnWindowPivotEvent OnWindowPivotChange;
 
+    public delegate void OnAnimationCompleteEvent();
+    public static event OnAnimationCompleteEvent OnAnimationComplete;
+
     static Vector2I positionReference;
     static Vector2I sizeReference;
 
     static WindowAnimationData AnimData;
 
-    public static void SetupWindow() {
-        WindowSetMode(WindowMode.Fullscreen);
+    public static void SetupWindow(bool Reset = true) {
+        WindowSetMode(WindowMode.Maximized);
 
         positionReference = WindowGetPosition();
         sizeReference = WindowGetSize();
-
-        WindowSetMode(WindowMode.Windowed);
-        WindowSetFlag(WindowFlags.Borderless, true);
 
         Vector2I size = ScreenGetSize();
 
@@ -90,15 +77,20 @@ public static class WindowSystem {
             1f / size.Y
         );
 
-        ResetWindow();
+        if (Reset) {
+            ResetWindow();
+        }
     }
 
     public static void ResetWindow() {
+        WindowSetMode(WindowMode.Windowed);
+        WindowSetFlag(WindowFlags.Borderless, true);
         WindowSetPosition(positionReference);
         WindowSetSize(sizeReference);
     }
 
     public static void SetAnimation(Vector2 startPos, Vector2 endPos, Vector2 startSize, Vector2 endSize, Vector2 startPivot, Vector2 endPivot, float time) {
+        GD.Print("Set");
         WindowAnimationData data = new WindowAnimationData(){
             StartPosition = startPos,
             EndPosition = endPos,
@@ -107,16 +99,28 @@ public static class WindowSystem {
             StartPivot = startPivot,
             EndPivot = endPivot,
             Time = time,
-            StartTime = Time.GetUnixTimeFromSystem()
+            StartTime = Time.GetUnixTimeFromSystem(),
         };
 
         AnimData = data;
     }
 
-    public static bool PumpAnimation() {
+    public static bool PumpAnimation(out float time) {
+        if (AnimData == null) {
+            time = -1f;
+            return true;
+        }
+
         WindowAnimationData dta = AnimData;
 
         float t = (float)(Time.GetUnixTimeFromSystem() - dta.StartTime) / dta.Time;
+
+        if (t >= 1f) {
+            OnAnimationComplete?.Invoke();
+            AnimData = null;
+            time = 1f;
+            return true;
+        }
 
         Position = new Vector2 (
             Mathf.Lerp(dta.StartPosition.X, dta.EndPosition.X, t),
@@ -133,14 +137,16 @@ public static class WindowSystem {
             Mathf.Lerp(dta.StartPivot.Y, dta.EndPivot.Y, t)            
         );
 
-        if (t >= 1f) {
-            return true;
-        }
-
+        time = t;
         return false;
     }
 
-    struct WindowAnimationData {
+    public static void ForceWindowUpdate() {
+        PivotPoint = PivotPoint;
+        Scale = Scale;
+    }
+
+    class WindowAnimationData {
         public double StartTime;
 
         public float Time;
