@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://24kogkfropup"]
+
+[ext_resource type="Script" path="res://Scripts/Micro Games/Objects/FrogObject.cs" id="1_ba4la"]
+[ext_resource type="Texture2D" uid="uid://b1j5mk2bb48yg" path="res://Art/Frog.png" id="2_n4ns3"]
+[ext_resource type="Script" path="res://Micro Game Assets/Frog/Frog.cs" id="3_2dlwn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0by8q"]
+atlas = ExtResource("2_n4ns3")
+region = Rect2(212, 0, 106, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1uir"]
+atlas = ExtResource("2_n4ns3")
+region = Rect2(0, 0, 106, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bqmn"]
+atlas = ExtResource("2_n4ns3")
+region = Rect2(106, 0, 106, 134)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5lio6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0by8q")
+}],
+"loop": true,
+"name": &"found",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_i1uir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bqmn")
+}],
+"loop": true,
+"name": &"ribbit",
+"speed": 3.0
+}]
+
+[node name="Frog" type="Node2D"]
+script = ExtResource("1_ba4la")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5lio6")
+animation = &"ribbit"
+frame_progress = 0.399575
+script = ExtResource("3_2dlwn")

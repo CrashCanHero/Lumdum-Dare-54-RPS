@@ -1,10 +1,11 @@
 using Godot;
 using System;
 
-public partial class CameraTest : Node2D {
+public partial class MicroCam : Node2D
+{
     Vector2 position;
-
-    public override void _Ready() {
+    public override void _Ready()
+    {
         WindowSystem.SetupWindow();
         WindowSystem.Position = Vector2.Zero;
         WindowSystem.Scale = Vector2.One * 0.75f;
@@ -27,14 +28,17 @@ public partial class CameraTest : Node2D {
         position = Vector2.Zero;
     }
 
-    public override void _Input(InputEvent @event) {
-        if (@event is not InputEventMouseMotion) {
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is not InputEventMouseMotion)
+        {
             return;
         }
 
         Vector2 relative = ((InputEventMouseMotion)@event).Relative * WindowSystem.PixelScale;
 
-        if (position == Vector2.Zero) {
+        if (position == Vector2.Zero)
+        {
             position += relative;
         }
     }
