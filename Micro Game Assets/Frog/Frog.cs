@@ -1,13 +1,17 @@
 using Godot;
 using System;
+using System.Numerics;
 
 public partial class Frog : AnimatedSprite2D
 {
     public override void _Process(double delta)
     {
-        Position = DisplayServer.ScreenGetSize(DisplayServer.WindowGetCurrentScreen());
-        GD.Print("Mouse - " + GetGlobalMousePosition());
-        GD.Print("This - " + GlobalPosition);
-
+        if (GlobalPosition.DistanceTo(GetGlobalMousePosition() - new Godot.Vector2(0, 150f / 4f)) < 50f)
+        {
+            if (Input.IsActionJustPressed("Click")) 
+            {
+                MicroGame.currentGameManager.Win();
+            }
+        }
     }
 }

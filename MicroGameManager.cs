@@ -8,6 +8,7 @@ public partial class MicroGameManager : Node2D
     public static MicroGameManager Instance;
 
     public int playerLives;
+    public int lastPlayerLives;
     public float gameTimescale = 1f;
 
     [Export]
@@ -42,12 +43,16 @@ public partial class MicroGameManager : Node2D
 
         if (lastLevel == levels[random]) 
         {
-            random = GD.RandRange(0, levels.Length);
+            random = GD.RandRange(0, levels.Length - 1);
         }
 
         LoadMicroGame(levels[random]);
 
         lastLevel = levels[random];
+    }
+    public int GetHealthDifference() 
+    {
+        return playerLives - lastPlayerLives;
     }
     public void LoadMicroGame(string name) 
     {
@@ -70,11 +75,17 @@ public partial class MicroGameManager : Node2D
 
     public void FinishGame(bool isWon) 
     {
-        if (!isWon) playerLives--;
+        if (!isWon) 
+        {
+            lastPlayerLives = playerLives;
+            playerLives--;
+        }
 
         isFinished = true;
 
         gameTimescale += gameTimescale * 0.1f;
+
+        LoadRandomMicroGame();
     }
 
     public void StartGame() 
