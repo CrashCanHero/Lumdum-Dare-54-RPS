@@ -21,5 +21,7 @@ public partial class FrogObject : MicroGameObject
         float distance = GlobalPosition.DistanceTo(GetGlobalMousePosition() - new Godot.Vector2(0, 150f / 4f));
 
         GetNode<AudioStreamPlayer>("AudioStreamPlayer").VolumeDb = 1f - ((distance / maxDistance) * 10f) * 5f + 1f;
+
+        //GD.Print(MicroGameManager.Froggers);
     }
 }

@@ -23,7 +23,7 @@ public partial class MicroGameManager : Node2D
 
     public int score;
 
-    private static ulong Froggers;
+    public static ulong Froggers;
 
     private bool isOver;
 

@@ -10,11 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Wario-Ware"
+config/name="Tess' Cool Finding Game!!!"
 run/main_scene="res://Scenes/Intro_Setup.tscn"
 config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
 run/max_fps=60
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Art/Shiku_2023_Transparent.png"
+config/icon="res://Art/Shiku_2023_Transparent.png"
+boot_splash/minimum_display_time=3000
 
 [display]
 

@@ -11,6 +11,7 @@ public partial class MainMenu : CenterContainer {
 
     public void OnGoButtonPressed() {
         GetTree().ChangeSceneToPacked(GD.Load<PackedScene>("res://Scenes/microgame.tscn"));
+        MicroGameManager.Froggers = 0u;
         QueueFree();
     }
 
