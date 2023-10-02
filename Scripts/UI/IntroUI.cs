@@ -15,7 +15,6 @@ public partial class IntroUI : Control {
     Button button;
     Control introScreen, waitScreen;
     Timer timer;
-    Label label;
     Control waitText, tess;
     AudioStreamPlayer audioPlayer;
     int waitIndex = 0;
@@ -25,7 +24,6 @@ public partial class IntroUI : Control {
         introScreen = GetNode<Control>(IntroScreenPath);
         waitScreen = GetNode<Control>(WaitScreenPath);
         timer = GetNode<Timer>(TimerPath);
-        label = GetNode<Label>(WaitScreenLabelPath);
         waitText = GetNode<Control>(WaitText);
         tess = GetNode<Control>(TessSpin);
         audioPlayer = GetNode<AudioStreamPlayer>(AudioStreamPlayerPath);
@@ -53,13 +51,14 @@ public partial class IntroUI : Control {
     }
 
     void NextWindowPosition(int animID) {
-        GD.Print(animID);
         if (animID >= 4) {
             audioPlayer.Stream = HighBoop;
             audioPlayer.Play();
-            GD.Print("Done");
-            timer.Stop();
-            IntroDone();
+            timer.WaitTime = 1f;
+            WindowSystem.PivotPoint = Vector2.One * 0.5f;
+            WindowSystem.Position = WindowSystem.PivotPoint;
+            timer.Timeout -= TimerDone;
+            timer.Timeout += IntroDone;
             return;
         }
         WindowSystem.Position = Corners[animID];
@@ -67,6 +66,7 @@ public partial class IntroUI : Control {
     }
 
     void IntroDone() {   
+        WindowSystem.PivotPoint = Vector2.Zero;
         WindowSystem.Position = Vector2.One * 0.8f;
         WindowSystem.Scale = Vector2.One * 0.6f;
         Control scene = (Control)ResourceLoader.Load<PackedScene>("res://Scenes/UI/Menu.tscn").Instantiate();
