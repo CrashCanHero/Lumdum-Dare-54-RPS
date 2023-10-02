@@ -11,6 +11,7 @@ offset_left = -53.0
 offset_top = 31.0
 offset_right = -53.0
 offset_bottom = 31.0
+Corners = PackedVector2Array(0, 0, 0.5, 0, 0.5, 0.5, 0, 0.5)
 metadata/_edit_use_anchors_ = true
 
 [node name="WindowAnimator" parent="." instance=ExtResource("2_o2k62")]

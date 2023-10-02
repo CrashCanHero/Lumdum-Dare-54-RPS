@@ -4,13 +4,21 @@ using System;
 public partial class IntroUI : Control {
 
     [Export]
-    public NodePath ButtonPath, IntroScreenPath, WaitScreenPath, TimerPath, WaitScreenLabelPath;
+    public NodePath ButtonPath, IntroScreenPath, WaitScreenPath, TimerPath, WaitScreenLabelPath, WaitText, TessSpin, AudioStreamPlayerPath;
+
+    [Export]
+    public AudioStream LowBoop, HighBoop;
+
+    [Export]
+    public Vector2[] Corners;
 
     Button button;
     Control introScreen, waitScreen;
     Timer timer;
     Label label;
-    int waitIndex;
+    Control waitText, tess;
+    AudioStreamPlayer audioPlayer;
+    int waitIndex = 0;
 
     public override void _Ready() {
         button = GetNode<Button>(ButtonPath);
@@ -18,7 +26,9 @@ public partial class IntroUI : Control {
         waitScreen = GetNode<Control>(WaitScreenPath);
         timer = GetNode<Timer>(TimerPath);
         label = GetNode<Label>(WaitScreenLabelPath);
-
+        waitText = GetNode<Control>(WaitText);
+        tess = GetNode<Control>(TessSpin);
+        audioPlayer = GetNode<AudioStreamPlayer>(AudioStreamPlayerPath);
         button.Pressed += SetupClicked;
     }
 
@@ -26,57 +36,39 @@ public partial class IntroUI : Control {
         introScreen.Visible = false;
         waitScreen.Visible = true;
 
-        timer.WaitTime = 0.2f;
-        timer.Timeout += Timer1Done;
-        button.Pressed -= SetupClicked;
+        WindowSystem.SetupWindow(false);
 
+        timer.OneShot = false;
+        timer.Timeout += TimerDone;
         timer.Start();
+        audioPlayer.Stream = LowBoop;
     }
 
-    void Timer1Done() {
-        WindowSystem.SetupWindow();
-
-        timer.Timeout -= Timer1Done;
-        timer.WaitTime = 0.5f;
-        timer.Timeout += Timer2Done;
-
-        timer.Start();
-    }
-
-    void Timer2Done() {
-        timer.Timeout -= Timer2Done;
-
-        float time = 1f;
-        float crossMoveTime = time * 1.15f;
-
-        int id = WindowAnimator.Instance[0, 0.3f];
-        id = WindowAnimator.Instance[1, time];
-        id = WindowAnimator.Instance[2, crossMoveTime];
-        id = WindowAnimator.Instance[3, time];
-        id = WindowAnimator.Instance[4, crossMoveTime / 2f];
-
-        WindowSystem.OnAnimationComplete += AnimComplete;
-    }
-
-    void AnimComplete() {
+    void TimerDone() {
+        waitText.Visible = false;
+        tess.Visible = true;
+        WindowSystem.Scale = Vector2.One * 0.5f;
+        NextWindowPosition(waitIndex);
         waitIndex++;
-
-        if (waitIndex == 5) {
-            label.Text = "Look Good? Good.";
-            label.LabelSettings.FontSize /= 2;
-            WindowSystem.OnAnimationComplete -= AnimComplete;
-
-            timer.WaitTime = 2f;
-            timer.Timeout += IntroDone;
-            timer.Start();
-        } else {
-            label.Text = waitIndex.ToString();
-        }
     }
 
-    void IntroDone() {
-        timer.Timeout -= IntroDone;
-        
+    void NextWindowPosition(int animID) {
+        GD.Print(animID);
+        if (animID >= 4) {
+            audioPlayer.Stream = HighBoop;
+            audioPlayer.Play();
+            GD.Print("Done");
+            timer.Stop();
+            IntroDone();
+            return;
+        }
+        WindowSystem.Position = Corners[animID];
+        audioPlayer.Play();
+    }
+
+    void IntroDone() {   
+        WindowSystem.Position = Vector2.One * 0.8f;
+        WindowSystem.Scale = Vector2.One * 0.6f;
         Control scene = (Control)ResourceLoader.Load<PackedScene>("res://Scenes/UI/Menu.tscn").Instantiate();
         GetParent().AddChild(scene);
         WindowSystem.Scale = Vector2.One;

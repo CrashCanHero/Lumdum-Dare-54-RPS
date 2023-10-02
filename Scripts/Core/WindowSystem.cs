@@ -77,20 +77,20 @@ public static class WindowSystem {
             1f / size.Y
         );
 
+        WindowSetMode(WindowMode.Windowed);
+        WindowSetFlag(WindowFlags.Borderless, true);
+
         if (Reset) {
             ResetWindow();
         }
     }
 
     public static void ResetWindow() {
-        WindowSetMode(WindowMode.Windowed);
-        WindowSetFlag(WindowFlags.Borderless, true);
         WindowSetPosition(positionReference);
         WindowSetSize(sizeReference);
     }
 
     public static void SetAnimation(Vector2 startPos, Vector2 endPos, Vector2 startSize, Vector2 endSize, Vector2 startPivot, Vector2 endPivot, float time) {
-        GD.Print("Set");
         WindowAnimationData data = new WindowAnimationData(){
             StartPosition = startPos,
             EndPosition = endPos,
