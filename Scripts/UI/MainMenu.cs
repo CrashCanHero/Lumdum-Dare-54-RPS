@@ -14,6 +14,12 @@ public partial class MainMenu : CenterContainer {
         QueueFree();
     }
 
+    public void OnMenuButtonPressed()
+    {
+        GetTree().ChangeSceneToPacked(GD.Load<PackedScene>("res://Scenes/UI/Menu.tscn"));
+        QueueFree();
+    }
+
     public void ScoreReady() {
         ScoreDisplay.Text = $"[center]{SaveSystem.Instance.Load()}";
     }

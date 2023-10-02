@@ -3,9 +3,16 @@ using System;
 
 public partial class MicroCam : Node2D
 {
+    public static MicroCam Instance;
     Vector2 position;
     public override void _Ready()
     {
+        if (Instance != null) 
+        {
+            QueueFree();
+            return;
+        }
+        Instance = this;
         WindowSystem.ResetWindow();
         WindowSystem.Position = Vector2.Zero;
         WindowSystem.Scale = Vector2.One * 0.5f;
@@ -15,6 +22,12 @@ public partial class MicroCam : Node2D
     public static void Shrink(float scale) 
     {
         WindowSystem.Scale = new Vector2(Math.Clamp(WindowSystem.Scale.X - scale, 0.25f, 1f), Math.Clamp(WindowSystem.Scale.Y - scale, 0.25f, 1f));
+    }
+
+    public void EndGame() 
+    {
+        GetTree().ChangeSceneToPacked(GD.Load<PackedScene>("res://Scenes/UI/Credits.tscn"));
+        QueueFree();
     }
 
     public override void _Process(double delta)

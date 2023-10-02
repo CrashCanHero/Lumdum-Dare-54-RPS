@@ -119,6 +119,8 @@ public partial class MicroGameManager : Node2D
         isOver = true;
         aud.Stop();
         ui.Hide();
+
+        MicroCam.Instance.EndGame();
     }
 
     public void FinishGame(bool isWon) 

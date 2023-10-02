@@ -1,23 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu1d3jpdu360e"]
+[gd_scene load_steps=8 format=3 uid="uid://bu1d3jpdu360e"]
 
 [ext_resource type="Texture2D" uid="uid://bxqungbro4xi" path="res://Art/Tess/TessGame.png" id="1_drv2d"]
 [ext_resource type="FontFile" uid="uid://du3nagrmyjln4" path="res://PixelArmy.ttf" id="1_eu0ad"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_ohi3b"]
 [ext_resource type="Texture2D" uid="uid://dnjstprjuhv8g" path="res://Art/Tess/TessCrankthatSouljaBoy.png" id="2_yhobm"]
 [ext_resource type="Texture2D" uid="uid://bcvy65qo1dgyi" path="res://Art/Tess/TesstheBig.png" id="3_gbuwq"]
+[ext_resource type="AudioStream" uid="uid://qwtwsflukg6d" path="res://Audio/WW1.wav" id="6_o86f3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbkcd"]
 font = ExtResource("1_eu0ad")
 font_size = 80
 
-[node name="Control" type="CenterContainer" node_paths=PackedStringArray("ScoreDisplay")]
+[node name="Control" type="CenterContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ohi3b")
-ScoreDisplay = NodePath("CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer/RichTextLabel2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -178,6 +178,9 @@ theme_override_font_sizes/normal_font_size = 106
 bbcode_enabled = true
 text = "[center]0"
 scroll_active = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("6_o86f3")
 
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Go Button" to="." method="OnGoButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Quit Button" to="." method="OnQuitButtonPressed"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpmae0xcfrgnn"]
+[gd_scene load_steps=7 format=3 uid="uid://bpmae0xcfrgnn"]
 
 [ext_resource type="Script" path="res://Scripts/Micro Games/FrogGame.cs" id="1_2tqtv"]
 [ext_resource type="PackedScene" uid="uid://24kogkfropup" path="res://Micro Game Assets/Frog/Frog Object.tscn" id="2_gtw1e"]
 [ext_resource type="PackedScene" uid="uid://dnl0shgtkoeii" path="res://Scenes/Foliage/bush.tscn" id="3_ix8r6"]
+[ext_resource type="PackedScene" uid="uid://dxw4j24qd52p3" path="res://Scenes/Foliage/Cattail.tscn" id="4_l5cli"]
+[ext_resource type="PackedScene" uid="uid://cnt800j83614c" path="res://Scenes/Foliage/lilypad.tscn" id="5_i6vc6"]
+[ext_resource type="PackedScene" uid="uid://qe5yuo5lu15i" path="res://Scenes/Foliage/rock.tscn" id="6_x8tf5"]
 
 [node name="Frog Micro Game" type="Node2D" node_paths=PackedStringArray("objs", "spawns")]
 script = ExtResource("1_2tqtv")
@@ -85,3 +88,30 @@ position = Vector2(1615, 918)
 
 [node name="Sprite2D15" parent="." instance=ExtResource("3_ix8r6")]
 position = Vector2(1671, 968)
+
+[node name="Sprite2D16" parent="." instance=ExtResource("4_l5cli")]
+position = Vector2(590, 605)
+
+[node name="Sprite2D17" parent="." instance=ExtResource("4_l5cli")]
+position = Vector2(1242, 817)
+
+[node name="Sprite2D18" parent="." instance=ExtResource("6_x8tf5")]
+position = Vector2(1072, 694)
+
+[node name="Sprite2D19" parent="." instance=ExtResource("5_i6vc6")]
+position = Vector2(1493, 282)
+
+[node name="Sprite2D20" parent="." instance=ExtResource("4_l5cli")]
+position = Vector2(1429, 273)
+
+[node name="Sprite2D21" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(604, 295)
+
+[node name="Sprite2D22" parent="." instance=ExtResource("3_ix8r6")]
+position = Vector2(463, 665)
+
+[node name="Sprite2D23" parent="." instance=ExtResource("6_x8tf5")]
+position = Vector2(244, 676)
+
+[node name="Sprite2D24" parent="." instance=ExtResource("6_x8tf5")]
+position = Vector2(431, 354)

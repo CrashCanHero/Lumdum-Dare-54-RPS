@@ -1,0 +1,192 @@
+[gd_scene load_steps=9 format=3 uid="uid://bn72j6bi3usw3"]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_0ag6h"]
+[ext_resource type="Texture2D" uid="uid://bxqungbro4xi" path="res://Art/Tess/TessGame.png" id="2_1wh61"]
+[ext_resource type="FontFile" uid="uid://du3nagrmyjln4" path="res://PixelArmy.ttf" id="3_j74lm"]
+[ext_resource type="Texture2D" uid="uid://dnjstprjuhv8g" path="res://Art/Tess/TessCrankthatSouljaBoy.png" id="4_nfqh7"]
+[ext_resource type="Texture2D" uid="uid://bcvy65qo1dgyi" path="res://Art/Tess/TesstheBig.png" id="5_5dups"]
+[ext_resource type="AudioStream" uid="uid://qwtwsflukg6d" path="res://Audio/WW1.wav" id="6_ckai5"]
+[ext_resource type="Script" path="res://Scenes/UI/Frogger.cs" id="7_0o5rl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbkcd"]
+font = ExtResource("3_j74lm")
+font_size = 80
+
+[node name="Control" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ag6h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="BG" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/BG"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+
+[node name="Title" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Title"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/Title/CenterContainer"]
+custom_minimum_size = Vector2(1920, 276.655)
+layout_mode = 2
+texture = ExtResource("2_1wh61")
+stretch_mode = 5
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/Title/CenterContainer2"]
+custom_minimum_size = Vector2(1920, 175)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_j74lm")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]You found:
+ [color=red]10 Frogs"
+scroll_active = false
+
+[node name="Go Button" type="BoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("4_nfqh7")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Go Button" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Go Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+label_settings = SubResource("LabelSettings_lbkcd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit Button" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Quit Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_lbkcd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer2" type="MarginContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/CenterContainer2"]
+layout_mode = 2
+texture = ExtResource("5_5dups")
+stretch_mode = 5
+
+[node name="High Score" type="BoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_j74lm")
+theme_override_font_sizes/normal_font_size = 106
+bbcode_enabled = true
+text = "[center]Previous Best "
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_j74lm")
+theme_override_font_sizes/normal_font_size = 106
+bbcode_enabled = true
+text = "[center]0"
+scroll_active = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("6_ckai5")
+
+[node name="Frogger" type="Node" parent="." node_paths=PackedStringArray("label")]
+script = ExtResource("7_0o5rl")
+label = NodePath("../CanvasLayer/CenterContainer/VBoxContainer/Title/CenterContainer2/RichTextLabel2")
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Go Button" to="." method="OnMenuButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Quit Button" to="." method="OnQuitButtonPressed"]
+[connection signal="ready" from="CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer/RichTextLabel2" to="." method="ScoreReady"]

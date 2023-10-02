@@ -45,7 +45,7 @@ script = ExtResource("1_ba4la")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5lio6")
 animation = &"ribbit"
-frame_progress = 0.201034
+frame_progress = 0.527219
 script = ExtResource("3_2dlwn")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
