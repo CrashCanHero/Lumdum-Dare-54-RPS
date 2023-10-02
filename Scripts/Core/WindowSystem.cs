@@ -25,7 +25,7 @@ public static class WindowSystem {
 
             WindowSetPosition(new Vector2I(
                 (int)Mathf.Lerp(positionReference.X - pivotSize.X, positionReference.X + sizeReference.X - pivotSize.X, value.X),
-                (int)Mathf.Lerp(positionReference.Y - pivotSize.Y - 50f, positionReference.Y + sizeReference.Y - pivotSize.Y - 50f, value.Y)
+                (int)Mathf.Lerp(positionReference.Y - pivotSize.Y, positionReference.Y + sizeReference.Y - pivotSize.Y, value.Y)
             ));
             OnWindowMove?.Invoke(value);
         }

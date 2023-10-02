@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn72j6bi3usw3"]
+[gd_scene load_steps=9 format=3 uid="uid://do6kcr6tyy8js"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_0ag6h"]
 [ext_resource type="Texture2D" uid="uid://bxqungbro4xi" path="res://Art/Tess/TessGame.png" id="2_1wh61"]
@@ -74,14 +74,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 8
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/Title/CenterContainer2"]
-custom_minimum_size = Vector2(1920, 175)
+custom_minimum_size = Vector2(1920, 200)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_j74lm")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "[center]You found:
  [color=red]10 Frogs"
+fit_content = true
 scroll_active = false
+autowrap_mode = 0
 
 [node name="Go Button" type="BoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 layout_mode = 2

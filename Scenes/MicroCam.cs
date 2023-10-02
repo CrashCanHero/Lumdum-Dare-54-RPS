@@ -28,7 +28,7 @@ public partial class MicroCam : Node2D
 
     public static void Shrink(float scale) 
     {
-        WindowSystem.SetAnimation(WindowSystem.Position, WindowSystem.Position, WindowSystem.Scale, new Vector2(Math.Clamp(WindowSystem.Scale.X - scale, 0.25f, 1f), Math.Clamp(WindowSystem.Scale.Y - scale, 0.25f, 1f)), WindowSystem.PivotPoint, WindowSystem.PivotPoint, 0.2f);
+        WindowSystem.SetAnimation(WindowSystem.Position, WindowSystem.Position, WindowSystem.Scale, new Vector2(Math.Clamp(WindowSystem.Scale.X - scale, 0.1f, 1f), Math.Clamp(WindowSystem.Scale.Y - scale, 0.1f, 1f)), WindowSystem.PivotPoint, WindowSystem.PivotPoint, 0.2f);
     }
 
     public void EndGame() 

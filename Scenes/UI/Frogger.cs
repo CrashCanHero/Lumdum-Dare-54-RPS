@@ -17,7 +17,7 @@ public partial class Frogger : Node
         //WindowSystem.Scale = Vector2.One * 0.5f;
         Input.MouseMode = Input.MouseModeEnum.Visible;
 
-        label.Text = $"[center]You found:\r\n [color=red]{MicroGameManager.GetFrogs()} Frogs";
+        label.Text = $"[center]You found:\n [color=red]{MicroGameManager.GetFrogs()} Frogs";
 
         if (SaveSystem.Instance.Load() < MicroGameManager.GetFrogs()) 
         {

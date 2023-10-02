@@ -55,6 +55,12 @@ public partial class MicroGameManager : Node2D
     }
     public override void _Process(double delta)
     {
+        #if DEBUG
+        if (Input.IsKeyPressed(Key.I)) {
+            Time = 0f;
+        }
+        #endif
+
         if (Time <= 0f && !isOver) 
         {
             GameOver();
