@@ -11,13 +11,14 @@
 font = ExtResource("1_eu0ad")
 font_size = 80
 
-[node name="Control" type="CenterContainer"]
+[node name="Control" type="CenterContainer" node_paths=PackedStringArray("ScoreDisplay")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ohi3b")
+ScoreDisplay = NodePath("CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer/RichTextLabel2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true

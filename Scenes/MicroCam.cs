@@ -5,6 +5,10 @@ public partial class MicroCam : Node2D
 {
     public static MicroCam Instance;
     Vector2 position;
+
+    private float shrinkTime;
+    private float timer;
+
     public override void _Ready()
     {
         if (Instance != null) 
@@ -13,15 +17,18 @@ public partial class MicroCam : Node2D
             return;
         }
         Instance = this;
+
         WindowSystem.ResetWindow();
-        WindowSystem.Position = Vector2.Zero;
+
         WindowSystem.Scale = Vector2.One * 0.5f;
+        WindowSystem.Position = position;
+
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     public static void Shrink(float scale) 
     {
-        WindowSystem.Scale = new Vector2(Math.Clamp(WindowSystem.Scale.X - scale, 0.25f, 1f), Math.Clamp(WindowSystem.Scale.Y - scale, 0.25f, 1f));
+        WindowSystem.SetAnimation(WindowSystem.Position, WindowSystem.Position, WindowSystem.Scale, new Vector2(Math.Clamp(WindowSystem.Scale.X - scale, 0.25f, 1f), Math.Clamp(WindowSystem.Scale.Y - scale, 0.25f, 1f)), WindowSystem.PivotPoint, WindowSystem.PivotPoint, 0.2f);
     }
 
     public void EndGame() 
@@ -37,6 +44,8 @@ public partial class MicroCam : Node2D
         WindowSystem.Position += position;
 
         position = Vector2.Zero;
+
+        WindowSystem.PumpAnimation(out float t);
     }
 
     public override void _Input(InputEvent @event)

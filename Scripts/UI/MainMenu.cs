@@ -21,6 +21,11 @@ public partial class MainMenu : CenterContainer {
     }
 
     public void ScoreReady() {
-        ScoreDisplay.Text = $"[center]{SaveSystem.Instance.Load()}";
+        ulong score = SaveSystem.Instance.Load();
+        if (score < MicroGameManager.GetFrogs()) 
+        {
+            score = MicroGameManager.GetFrogs();
+        }
+        ScoreDisplay.Text = $"[center]{score.ToString()}";
     }
 }

@@ -18,6 +18,7 @@ public partial class Frog : AnimatedSprite2D
 
                 //anim
                 GetParent().GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("found");
+                MicroCam.Shrink(0.02f);
             }
         }
 
