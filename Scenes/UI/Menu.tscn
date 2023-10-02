@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bu1d3jpdu360e"]
+[gd_scene load_steps=9 format=3 uid="uid://bu1d3jpdu360e"]
 
 [ext_resource type="Texture2D" uid="uid://bxqungbro4xi" path="res://Art/Tess/TessGame.png" id="1_drv2d"]
 [ext_resource type="FontFile" uid="uid://du3nagrmyjln4" path="res://PixelArmy.ttf" id="1_eu0ad"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dnjstprjuhv8g" path="res://Art/Tess/TessCrankthatSouljaBoy.png" id="2_yhobm"]
 [ext_resource type="Texture2D" uid="uid://bcvy65qo1dgyi" path="res://Art/Tess/TesstheBig.png" id="3_gbuwq"]
 [ext_resource type="AudioStream" uid="uid://qwtwsflukg6d" path="res://Audio/WW1.wav" id="6_o86f3"]
+[ext_resource type="Texture2D" uid="uid://blfnf07j8gai3" path="res://Art/RPS_Logo_2023.png" id="6_yjsac"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbkcd"]
 font = ExtResource("1_eu0ad")
@@ -18,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ohi3b")
-ScoreDisplay = NodePath("CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer/RichTextLabel2")
+ScoreDisplay = NodePath("CanvasLayer/CenterContainer/VBoxContainer/High Score/HBoxContainer/VBoxContainer/RichTextLabel2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -156,11 +157,22 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_yjsac")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -170,7 +182,7 @@ bbcode_enabled = true
 text = "[center]Previous Best "
 scroll_active = false
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer/High Score/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -182,7 +194,9 @@ scroll_active = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("6_o86f3")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Go Button" to="." method="OnGoButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Go Button/HBoxContainer/VBoxContainer/Quit Button" to="." method="OnQuitButtonPressed"]
-[connection signal="ready" from="CanvasLayer/CenterContainer/VBoxContainer/High Score/VBoxContainer/RichTextLabel2" to="." method="ScoreReady"]
+[connection signal="ready" from="CanvasLayer/CenterContainer/VBoxContainer/High Score/HBoxContainer/VBoxContainer/RichTextLabel2" to="." method="ScoreReady"]

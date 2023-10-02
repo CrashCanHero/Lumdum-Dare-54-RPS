@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://skuxuq7eowjw"]
+[gd_scene load_steps=20 format=3 uid="uid://skuxuq7eowjw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/IntroUI.cs" id="1_r70ad"]
 [ext_resource type="Texture2D" uid="uid://bcdsaiyryni0a" path="res://Art/Tess/TessBreakDance.png" id="2_rrw2s"]
 [ext_resource type="AudioStream" uid="uid://cwyxaasvsxxlu" path="res://Audio/BoopB_Low.wav" id="2_w16ru"]
 [ext_resource type="AudioStream" uid="uid://d3d10hkxaucbf" path="res://Audio/BoopB_High.wav" id="3_bwxt8"]
+[ext_resource type="AudioStream" uid="uid://b3c2iw3mfckr" path="res://Audio/WW3.wav" id="5_el27x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_teyyi"]
 font_size = 200
@@ -273,3 +274,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Music Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_el27x")
+volume_db = -20.0
+autoplay = true
