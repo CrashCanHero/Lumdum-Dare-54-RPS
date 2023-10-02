@@ -10,4 +10,10 @@ public partial class WindowCanvas : CanvasLayer {
     void ScaleChange(Vector2 newScale) {
         Scale = newScale * 1.33f;
     }
+
+    public override void _ExitTree()
+    {
+        WindowSystem.OnWindowScale -= ScaleChange;
+        base._ExitTree();
+    }
 }

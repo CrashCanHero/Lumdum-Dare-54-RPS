@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/Micro Games/FrogGame.cs" id="1_2tqtv"]
 [ext_resource type="PackedScene" uid="uid://24kogkfropup" path="res://Micro Game Assets/Frog/Frog Object.tscn" id="2_gtw1e"]
 [ext_resource type="PackedScene" uid="uid://dnl0shgtkoeii" path="res://Scenes/Foliage/bush.tscn" id="3_ix8r6"]
-[ext_resource type="PackedScene" path="res://Scenes/Foliage/Cattail.tscn" id="4_l5cli"]
-[ext_resource type="PackedScene" path="res://Scenes/Foliage/lilypad.tscn" id="5_i6vc6"]
-[ext_resource type="PackedScene" path="res://Scenes/Foliage/rock.tscn" id="6_x8tf5"]
+[ext_resource type="PackedScene" uid="uid://dxw4j24qd52p3" path="res://Scenes/Foliage/Cattail.tscn" id="4_l5cli"]
+[ext_resource type="PackedScene" uid="uid://cnt800j83614c" path="res://Scenes/Foliage/lilypad.tscn" id="5_i6vc6"]
+[ext_resource type="PackedScene" uid="uid://qe5yuo5lu15i" path="res://Scenes/Foliage/rock.tscn" id="6_x8tf5"]
 
 [node name="Frog Micro Game" type="Node2D" node_paths=PackedStringArray("objs", "spawns")]
 script = ExtResource("1_2tqtv")

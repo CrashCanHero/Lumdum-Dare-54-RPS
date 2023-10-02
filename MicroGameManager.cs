@@ -44,7 +44,11 @@ public partial class MicroGameManager : Node2D
 
     public override void _Ready()
     {
+
+        isOver = true;
+
         if (Instance != null) {
+            GD.Print("Goodbye");
             QueueFree();
             return;
         }
@@ -121,6 +125,7 @@ public partial class MicroGameManager : Node2D
     public void GameOver() 
     {
         //code here
+        Instance = null;
         currentGame.QueueFree();
         isOver = true;
         aud.Stop();

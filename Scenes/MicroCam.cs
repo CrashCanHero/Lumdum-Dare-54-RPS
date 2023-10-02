@@ -18,7 +18,9 @@ public partial class MicroCam : Node2D
         }
         Instance = this;
 
-        WindowSystem.ResetWindow();
+        //WindowSystem.ResetWindow();
+
+        Input.MouseMode = Input.MouseModeEnum.Visible;
 
         WindowSystem.Scale = Vector2.One * 0.5f;
         WindowSystem.Position = position;
@@ -34,11 +36,14 @@ public partial class MicroCam : Node2D
     public void EndGame() 
     {
         GetTree().ChangeSceneToPacked(GD.Load<PackedScene>("res://Scenes/UI/Credits.tscn"));
+        Instance = null;
         QueueFree();
     }
 
     public override void _Process(double delta)
     {
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+
         base._Process(delta);
 
         WindowSystem.Position += position;
